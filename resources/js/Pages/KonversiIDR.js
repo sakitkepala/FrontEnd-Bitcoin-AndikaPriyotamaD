@@ -6,7 +6,7 @@ import { KeteranganKurs } from "../komponen/keterangan-kurs";
 import { FormKonversi } from "../komponen/form-konversi";
 
 export default function KonversiIDR() {
-    const [inputBTC, setInputBTC] = React.useState(0);
+    const [inputBTC, setInputBTC] = React.useState(1);
 
     const perUSD = useQuery(["btc-per-usd"], async () => {
         return await apiClient(
@@ -34,6 +34,7 @@ export default function KonversiIDR() {
                     displayHasil={
                         perUSD.data ? hitungNominalIDR(perUSD.data) : 0
                     }
+                    isLoading={perUSD.isLoading}
                 />
             </main>
         </Layout>

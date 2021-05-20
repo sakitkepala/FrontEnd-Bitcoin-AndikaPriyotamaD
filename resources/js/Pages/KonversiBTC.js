@@ -6,7 +6,7 @@ import { KeteranganKurs } from "../komponen/keterangan-kurs";
 import { FormKonversi } from "../komponen/form-konversi";
 
 export default function KonversiBTC() {
-    const [inputIDR, setInputIDR] = React.useState(0);
+    const [inputIDR, setInputIDR] = React.useState(14000);
 
     const nominalUSD = inputIDR / 14000;
     const nominalBTC = useQuery(["btc-dari-usd", nominalUSD], async () => {
@@ -29,6 +29,7 @@ export default function KonversiBTC() {
                     inputNominal={inputIDR}
                     onChangeInput={input => setInputIDR(input)}
                     displayHasil={nominalBTC.data || 0}
+                    isLoading={nominalBTC.isLoading}
                 />
             </main>
         </Layout>
