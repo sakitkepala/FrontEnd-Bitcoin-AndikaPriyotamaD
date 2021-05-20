@@ -39,7 +39,9 @@ export default function KonversiIDR() {
                             type="number"
                             value={inputBTC}
                             onChange={() => {
-                                setInputBTC(refInputNominal.current.value);
+                                setInputBTC(
+                                    Number(refInputNominal.current.value)
+                                );
                             }}
                         />
                         &#61; IDR
