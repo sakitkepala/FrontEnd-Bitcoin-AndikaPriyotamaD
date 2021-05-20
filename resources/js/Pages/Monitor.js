@@ -45,7 +45,9 @@ export default function Monitor() {
         <div className="screen">
             <header className="header">
                 <nav className="navigasi">
-                    <a>Depan</a> <a>BTC &rarr; IDR</a> <a>IDR &rarr; BTC</a>
+                    <a href="/">Depan</a>
+                    <a href="/btc-ke-idr">BTC&rarr;IDR</a>
+                    <a href="/idr-ke-btc">IDR&rarr;BTC</a>
                 </nav>
             </header>
 
