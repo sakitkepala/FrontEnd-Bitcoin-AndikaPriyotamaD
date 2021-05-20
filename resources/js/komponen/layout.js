@@ -18,6 +18,11 @@ function Layout({ children }) {
             </header>
 
             {children}
+
+            <footer className="footer">
+                {new Date().getFullYear()} &copy; Dibuat oleh Andika Priyotama
+                D.
+            </footer>
         </div>
     );
 }
