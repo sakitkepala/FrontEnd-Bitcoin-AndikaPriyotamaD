@@ -4,6 +4,6 @@ Untuk demo cek di sini: [https://bitcoin-fe-andika.herokuapp.com](https://bitcoi
 
 ## Stack
 
-Aplikasi [Laravel](https://laravel.com) simpel (versi 7.x) dengan View/front-end [React JS](https://reactjs.org/), dibantu [Inertia.js](https://inertiajs.com/) untuk [mengintegrasikan](https://reinink.ca/articles/introducing-inertia-js) routing dan controller Laravel dengan aplikasi single-page React, sehingga tidak perlu menggunakan Laravel sebagai API back-end.
+Aplikasi [Laravel](https://laravel.com) simpel (versi 7.x) dengan View/frontend [React JS](https://reactjs.org/), dibantu [Inertia.js](https://inertiajs.com/) untuk [mengintegrasikan](https://reinink.ca/articles/introducing-inertia-js) routing dan controller Laravel dengan aplikasi single-page React, sehingga Laravel bisa digunakan sebagai framework monolitik seperti biasa dan tidak perlu menyediakan API khusus di backend.
 
-Menggunakan data dari [www.blockchain.com/explorer](https://www.blockchain.com/explorer) sebagai sumber data.
+Sumber data dari: [blockchain.com/explorer](https://www.blockchain.com/explorer).
