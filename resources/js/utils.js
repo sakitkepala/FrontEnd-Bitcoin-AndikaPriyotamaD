@@ -10,7 +10,7 @@ function apiClient(url) {
     });
 }
 
-const formatKurs = (angka, kurs) => {
+const formatKurs = (angka, kurs, display) => {
     if (!kurs) {
         console.info(
             "Set dulu parameter `kurs`-nya biar eksplisit dan hasilnya lebih ketebak."
@@ -19,7 +19,7 @@ const formatKurs = (angka, kurs) => {
     return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: kurs || "IDR",
-        currencyDisplay: "code",
+        currencyDisplay: display || "code",
         minimumFractionDigits: 2,
         maximumFractionDigits: kurs === "BTC" ? 10 : 2
     }).format(angka);

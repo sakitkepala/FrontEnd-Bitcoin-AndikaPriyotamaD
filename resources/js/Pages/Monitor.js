@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useQuery } from "react-query";
-import { apiClient } from "../utils";
+import { apiClient, formatKurs } from "../utils";
 import { Layout } from "../komponen/layout";
 
 function persiapkanDataTabel(dataAPI) {
@@ -18,8 +18,8 @@ function persiapkanDataTabel(dataAPI) {
             {
                 key: kode,
                 mataUang: MATA_UANG[kode],
-                jual: `${dataAPI[kode].symbol}${dataAPI[kode].sell}`,
-                beli: `${dataAPI[kode].symbol}${dataAPI[kode].buy}`
+                jual: formatKurs(dataAPI[kode].sell, kode, "narrowSymbol"),
+                beli: formatKurs(dataAPI[kode].buy, kode, "narrowSymbol")
             }
         ],
         []
