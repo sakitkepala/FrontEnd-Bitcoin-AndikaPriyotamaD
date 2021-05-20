@@ -2,6 +2,7 @@ import * as React from "react";
 import { useQuery } from "react-query";
 import { apiClient } from "../utils";
 import { Layout } from "../komponen/layout";
+import { KeteranganKurs } from "../komponen/keterangan-kurs";
 
 export default function KonversiBTC() {
     const refInputNominal = React.useRef(null);
@@ -17,8 +18,11 @@ export default function KonversiBTC() {
     return (
         <Layout>
             <main className="main">
-                <h1 className="heading-judul">Konversi Rupiah ke Bitcoin</h1>
-                <p>Kurs USD1 &#61; IDR14,000.00</p>
+                <h1 className="heading-judul">
+                    Konversi Rupiah{" "}
+                    <span className="konversi-stabilo">ke Bitcoin</span>
+                </h1>
+                <KeteranganKurs />
 
                 <form className="form-konversi">
                     <div className="input-konversi">
@@ -35,7 +39,9 @@ export default function KonversiBTC() {
                             }}
                         />
                         &#61; BTC
-                        <span>{nominalBTC.data || 0}</span>
+                        <span className="hasil-konversi">
+                            {nominalBTC.data || 0}
+                        </span>
                     </div>
                 </form>
             </main>

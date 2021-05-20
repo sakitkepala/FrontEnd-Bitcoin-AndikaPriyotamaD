@@ -45,8 +45,12 @@ export default function Monitor() {
                         <thead>
                             <tr>
                                 <th className="kolom-mata-uang">Mata Uang</th>
-                                <th className="kolom-harga">Beli</th>
-                                <th className="kolom-harga">Jual</th>
+                                <th className="kolom-harga">
+                                    Harga Beli Bitcoin
+                                </th>
+                                <th className="kolom-harga">
+                                    Harga Jual Bitcoin
+                                </th>
                             </tr>
                         </thead>
 
