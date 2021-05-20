@@ -1,7 +1,14 @@
 import * as React from "react";
+import { VscLoading } from "react-icons/vsc";
 import { formatKurs } from "../utils";
 
-function FormKonversi({ ke, inputNominal, onChangeInput, displayHasil }) {
+function FormKonversi({
+    ke,
+    inputNominal,
+    onChangeInput,
+    displayHasil,
+    isLoading
+}) {
     if (!ke) {
         throw new Error("Mata uangnya belum diset.");
     }
@@ -26,6 +33,12 @@ function FormKonversi({ ke, inputNominal, onChangeInput, displayHasil }) {
             <div className="sama-dengan">&#61;</div>
 
             <div className="hasil-konversi">
+                {isLoading && (
+                    <span className="loading-animasi">
+                        <VscLoading />
+                    </span>
+                )}
+
                 <span className="hasil-konversi-angka">
                     {formatKurs(displayHasil, ke)}
                 </span>

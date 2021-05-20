@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useQuery } from "react-query";
+import { VscLoading } from "react-icons/vsc";
 import { apiClient, formatKurs } from "../utils";
 import { Layout } from "../komponen/layout";
 
@@ -38,6 +39,9 @@ export default function Monitor() {
 
                 {!kurs.data ? (
                     <div className="tabel-kurs memuat">
+                        <span className="loading-animasi">
+                            <VscLoading />
+                        </span>{" "}
                         Sedang mengambil data...
                     </div>
                 ) : (

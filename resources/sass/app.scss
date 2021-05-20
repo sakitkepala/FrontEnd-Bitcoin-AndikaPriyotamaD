@@ -166,6 +166,19 @@ body {
     }
 }
 
+.loading-animasi > svg {
+    animation: mutermuter 1s infinite linear;
+}
+
+@keyframes mutermuter {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
 .footer {
     padding: 3rem 0;
     font-size: 1.3rem;
