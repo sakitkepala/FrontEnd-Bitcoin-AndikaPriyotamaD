@@ -2,18 +2,14 @@ import * as React from "react";
 import { useQuery } from "react-query";
 import { apiClient } from "../utils";
 
-function konversiIDRKeUSD(nominalAwal) {
-    return nominalAwal / 14000;
-}
-
 export default function KonversiBTC() {
     const refInputNominal = React.useRef(null);
-    const [inputNominal, setInputNominal] = React.useState(0);
-    const nominalDalamUSD = konversiIDRKeUSD(inputNominal);
+    const [inputIDR, setInputIDR] = React.useState(0);
 
-    const konversi = useQuery(["btc-dari-usd", nominalDalamUSD], async () => {
+    const nominalUSD = inputIDR / 14000;
+    const nominalBTC = useQuery(["btc-dari-usd", nominalUSD], async () => {
         return await apiClient(
-            `https://blockchain.info/tobtc?currency=USD&value=${nominalDalamUSD}`
+            `https://blockchain.info/tobtc?currency=USD&value=${nominalUSD}`
         );
     });
 
@@ -38,15 +34,15 @@ export default function KonversiBTC() {
                             className="input-nominal"
                             ref={refInputNominal}
                             type="number"
-                            value={inputNominal}
+                            value={inputIDR}
                             onChange={() => {
-                                setInputNominal(
+                                setInputIDR(
                                     Number(refInputNominal.current.value)
                                 );
                             }}
                         />
                         &#61; BTC
-                        <span>{konversi.data || 0}</span>
+                        <span>{nominalBTC.data || 0}</span>
                     </div>
                 </form>
             </main>
