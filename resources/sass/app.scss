@@ -129,21 +129,21 @@ body {
 .form-konversi {
     width: 100%;
     margin-top: 4.8rem;
-    padding: 2rem;
+    padding: 3.6rem 2rem;
 
     background-color: white;
     border-radius: 3px;
+
+    font-size: 2.8rem;
 
     .input-konversi {
         display: flex;
         justify-content: center;
         align-items: baseline;
-
-        font-size: 2.8rem;
     }
 
     .input-nominal {
-        width: 12rem;
+        width: 28rem;
         margin: 0 1rem;
         padding: 1rem;
 
@@ -151,8 +151,17 @@ body {
         text-align: right;
     }
 
-    span.hasil-konversi {
-        margin-left: 1rem;
-        background-color: aquamarine;
+    .sama-dengan {
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 3.6rem;
+    }
+
+    .hasil-konversi {
+        text-align: center;
+
+        span.hasil-konversi-angka {
+            margin-left: 1rem;
+        }
     }
 }
