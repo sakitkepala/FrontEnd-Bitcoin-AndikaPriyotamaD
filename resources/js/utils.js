@@ -21,7 +21,7 @@ const formatKurs = (angka, kurs) => {
         currency: kurs || "IDR",
         currencyDisplay: "code",
         minimumFractionDigits: 2,
-        maximumFractionDigits: angka < 1 ? 10 : 2
+        maximumFractionDigits: kurs === "BTC" ? 10 : 2
     }).format(angka);
 };
 
