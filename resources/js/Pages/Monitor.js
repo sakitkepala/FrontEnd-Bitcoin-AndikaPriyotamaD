@@ -9,7 +9,7 @@ function filterKurs(data, daftarMataUang) {
 }
 
 function apiClient(url) {
-    fetch(url).then(async respon => {
+    return fetch(url).then(async respon => {
         const data = await respon.json();
 
         if (!respon.ok) {
@@ -21,9 +21,11 @@ function apiClient(url) {
 }
 
 export default function Monitor() {
-    const kurs = useQuery(async () => {
+    const kurs = useQuery(["kurs"], async () => {
         return await apiClient("https://blockchain.info/ticker");
     });
+
+    console.log(kurs);
 
     return (
         <div>
