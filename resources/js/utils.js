@@ -10,4 +10,19 @@ function apiClient(url) {
     });
 }
 
-export { apiClient };
+const formatKurs = (angka, kurs) => {
+    if (!kurs) {
+        console.info(
+            "Set dulu parameter `kurs`-nya biar eksplisit dan hasilnya lebih ketebak."
+        );
+    }
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: kurs || "IDR",
+        currencyDisplay: "code",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: angka < 1 ? 10 : 2
+    }).format(angka);
+};
+
+export { apiClient, formatKurs };

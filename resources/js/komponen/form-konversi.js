@@ -1,4 +1,5 @@
 import * as React from "react";
+import { formatKurs } from "../utils";
 
 function FormKonversi({ ke, inputNominal, onChangeInput, displayHasil }) {
     if (!ke) {
@@ -25,8 +26,9 @@ function FormKonversi({ ke, inputNominal, onChangeInput, displayHasil }) {
             <div className="sama-dengan">&#61;</div>
 
             <div className="hasil-konversi">
-                {ke}
-                <span className="hasil-konversi-angka">{displayHasil}</span>
+                <span className="hasil-konversi-angka">
+                    {formatKurs(displayHasil, ke)}
+                </span>
             </div>
         </div>
     );
