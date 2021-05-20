@@ -1,15 +1,20 @@
 import * as React from "react";
-
-function hitungKonversi(nominalAwal) {
-    const btcPerUsd = 0.0000251;
-    return (nominalAwal / 14000) * btcPerUsd;
-}
+import { useQuery } from "react-query";
+import { apiClient } from "../utils";
 
 export default function KonversiIDR() {
-    const [inputNominal, setInputNominal] = React.useState(0);
-    const hasilKonversi = hitungKonversi(inputNominal);
-
     const refInputNominal = React.useRef(null);
+    const [inputBTC, setInputBTC] = React.useState(0);
+
+    const perUSD = useQuery(["btc-per-usd"], async () => {
+        return await apiClient(
+            "https://blockchain.info/tobtc?currency=USD&value=1"
+        );
+    });
+
+    function hitungNominalIDR(perUSD) {
+        return (inputBTC / perUSD) * 14000;
+    }
 
     return (
         <div className="screen">
@@ -27,18 +32,20 @@ export default function KonversiIDR() {
 
                 <form className="form-konversi">
                     <div className="input-konversi">
-                        IDR
+                        BTC
                         <input
                             className="input-nominal"
                             ref={refInputNominal}
                             type="number"
-                            value={inputNominal}
+                            value={inputBTC}
                             onChange={() => {
-                                setInputNominal(refInputNominal.current.value);
+                                setInputBTC(refInputNominal.current.value);
                             }}
                         />
-                        &#61; BTC
-                        <span>{hasilKonversi}</span>
+                        &#61; IDR
+                        <span>
+                            {perUSD.data ? hitungNominalIDR(perUSD.data) : 0}
+                        </span>
                     </div>
                 </form>
             </main>
