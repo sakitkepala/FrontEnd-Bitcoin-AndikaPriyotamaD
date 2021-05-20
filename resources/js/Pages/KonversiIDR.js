@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-query";
 import { apiClient } from "../utils";
+import { Layout } from "../komponen/layout";
 
 export default function KonversiIDR() {
     const refInputNominal = React.useRef(null);
@@ -17,15 +18,7 @@ export default function KonversiIDR() {
     }
 
     return (
-        <div className="screen">
-            <header className="header">
-                <nav className="navigasi">
-                    <a href="/">Depan</a>
-                    <a href="/btc-ke-idr">BTC&rarr;IDR</a>
-                    <a href="/idr-ke-btc">IDR&rarr;BTC</a>
-                </nav>
-            </header>
-
+        <Layout>
             <main className="main">
                 <h1 className="heading-judul">Konversi Bitcoin ke Rupiah</h1>
                 <p>Kurs USD1 &#61; IDR14,000.00</p>
@@ -51,6 +44,6 @@ export default function KonversiIDR() {
                     </div>
                 </form>
             </main>
-        </div>
+        </Layout>
     );
 }

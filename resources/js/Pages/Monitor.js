@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useQuery } from "react-query";
 import { apiClient } from "../utils";
+import { Layout } from "../komponen/layout";
 
-function persiapkanDataSource(dataAPI) {
+function persiapkanDataTabel(dataAPI) {
     const MATA_UANG = {
         AUD: "Dollar Australia",
         EUR: "Euro Eropa",
@@ -31,15 +32,7 @@ export default function Monitor() {
     });
 
     return (
-        <div className="screen">
-            <header className="header">
-                <nav className="navigasi">
-                    <a href="/">Depan</a>
-                    <a href="/btc-ke-idr">BTC&rarr;IDR</a>
-                    <a href="/idr-ke-btc">IDR&rarr;BTC</a>
-                </nav>
-            </header>
-
+        <Layout>
             <main className="main">
                 <h1 className="heading-judul">Harga Bitcoin Hari Ini</h1>
 
@@ -58,7 +51,7 @@ export default function Monitor() {
                         </thead>
 
                         <tbody>
-                            {persiapkanDataSource(kurs.data).map(record => (
+                            {persiapkanDataTabel(kurs.data).map(record => (
                                 <tr key={record.key}>
                                     <td>{record.mataUang}</td>
                                     <td className="kolom-harga">
@@ -73,6 +66,6 @@ export default function Monitor() {
                     </table>
                 )}
             </main>
-        </div>
+        </Layout>
     );
 }
