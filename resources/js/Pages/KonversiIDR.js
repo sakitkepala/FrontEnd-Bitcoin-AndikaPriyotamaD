@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "react-query";
 import { apiClient } from "../utils";
 import { Layout } from "../komponen/layout";
 import { KeteranganKurs } from "../komponen/keterangan-kurs";
-import { FormKonversi } from "../komponen/form-konversi";
+import { KonverterBitcoin } from "../komponen/form-konversi";
 
 export default function KonversiIDR() {
     const queryClient = useQueryClient();
@@ -33,15 +33,14 @@ export default function KonversiIDR() {
                 </h1>
                 <KeteranganKurs />
 
-                <FormKonversi
+                <KonverterBitcoin
+                    dari="BTC"
                     ke="IDR"
-                    inputNominal={inputBTC}
+                    input={inputBTC}
+                    hasil={perUSD.data ? hitungNominalIDR(perUSD.data) : 0}
                     onChangeInput={input => {
                         setInputBTC(input <= 0 ? 0 : input);
                     }}
-                    displayHasil={
-                        perUSD.data ? hitungNominalIDR(perUSD.data) : 0
-                    }
                     isLoading={perUSD.isFetching}
                 />
             </main>

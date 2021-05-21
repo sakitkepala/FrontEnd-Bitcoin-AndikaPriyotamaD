@@ -2,37 +2,54 @@ import * as React from "react";
 import { VscLoading } from "react-icons/vsc";
 import { formatKurs } from "../utils";
 
-function FormKonversi({
-    ke,
-    inputNominal,
-    onChangeInput,
-    displayHasil,
-    isLoading
-}) {
-    if (!ke) {
-        throw new Error("Mata uangnya belum diset.");
-    }
-
-    const [displayHasilPrev, setDisplayHasilPrev] = React.useState(0);
+function DisplayHasilKonversi({ kurs, value, isLoading }) {
+    const [valuePrevious, setValuePrevious] = React.useState(0);
 
     React.useEffect(() => {
-        if (isLoading || displayHasil === displayHasilPrev) {
+        if (isLoading || value === valuePrevious) {
             return;
         }
-        setDisplayHasilPrev(displayHasil);
-    }, [isLoading, displayHasil, displayHasilPrev]);
+        setValuePrevious(value);
+    }, [isLoading, value, valuePrevious]);
+
+    return (
+        <div className="hasil-konversi">
+            {isLoading && (
+                <span className="loading-animasi">
+                    <VscLoading />
+                </span>
+            )}
+
+            <span className="hasil-konversi-angka">
+                {formatKurs(isLoading ? valuePrevious : value, kurs)}
+            </span>
+        </div>
+    );
+}
+
+function KonverterBitcoin({
+    dari: kursAwal,
+    ke: kursHasil,
+    hasil,
+    input,
+    onChangeInput,
+    isLoading
+}) {
+    if (!kursAwal || !kursHasil) {
+        throw new Error("Mata uangnya belum diset.");
+    }
 
     const refInputNominal = React.useRef(null);
 
     return (
         <div className="form-konversi">
             <div className="input-konversi">
-                {ke !== "IDR" ? "IDR" : "BTC"}
+                {kursAwal}
                 <input
                     className="input-nominal"
                     ref={refInputNominal}
                     type="number"
-                    value={inputNominal}
+                    value={input}
                     onChange={() => {
                         onChangeInput(Number(refInputNominal.current.value));
                     }}
@@ -41,22 +58,13 @@ function FormKonversi({
 
             <div className="sama-dengan">&#61;</div>
 
-            <div className="hasil-konversi">
-                {isLoading && (
-                    <span className="loading-animasi">
-                        <VscLoading />
-                    </span>
-                )}
-
-                <span className="hasil-konversi-angka">
-                    {formatKurs(
-                        isLoading ? displayHasilPrev : displayHasil,
-                        ke
-                    )}
-                </span>
-            </div>
+            <DisplayHasilKonversi
+                kurs={kursHasil}
+                value={hasil}
+                isLoading={isLoading}
+            />
         </div>
     );
 }
 
-export { FormKonversi };
+export { KonverterBitcoin };
