@@ -13,6 +13,15 @@ function FormKonversi({
         throw new Error("Mata uangnya belum diset.");
     }
 
+    const [displayHasilPrev, setDisplayHasilPrev] = React.useState(0);
+
+    React.useEffect(() => {
+        if (isLoading || displayHasil === displayHasilPrev) {
+            return;
+        }
+        setDisplayHasilPrev(displayHasil);
+    }, [isLoading, displayHasil, displayHasilPrev]);
+
     const refInputNominal = React.useRef(null);
 
     return (
@@ -40,7 +49,10 @@ function FormKonversi({
                 )}
 
                 <span className="hasil-konversi-angka">
-                    {formatKurs(displayHasil, ke)}
+                    {formatKurs(
+                        isLoading ? displayHasilPrev : displayHasil,
+                        ke
+                    )}
                 </span>
             </div>
         </div>
