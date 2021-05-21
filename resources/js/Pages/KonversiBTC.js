@@ -27,7 +27,9 @@ export default function KonversiBTC() {
                 <FormKonversi
                     ke="BTC"
                     inputNominal={inputIDR}
-                    onChangeInput={input => setInputIDR(input)}
+                    onChangeInput={input => {
+                        setInputIDR(input <= 0 ? 0 : input);
+                    }}
                     displayHasil={nominalBTC.data || 0}
                     isLoading={nominalBTC.isLoading}
                 />

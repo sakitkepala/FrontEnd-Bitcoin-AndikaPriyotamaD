@@ -30,7 +30,9 @@ export default function KonversiIDR() {
                 <FormKonversi
                     ke="IDR"
                     inputNominal={inputBTC}
-                    onChangeInput={input => setInputBTC(input)}
+                    onChangeInput={input => {
+                        setInputBTC(input <= 0 ? 0 : input);
+                    }}
                     displayHasil={
                         perUSD.data ? hitungNominalIDR(perUSD.data) : 0
                     }
