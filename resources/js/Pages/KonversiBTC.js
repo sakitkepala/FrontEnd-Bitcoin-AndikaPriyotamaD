@@ -31,7 +31,7 @@ export default function KonversiBTC() {
                         setInputIDR(input <= 0 ? 0 : input);
                     }}
                     displayHasil={nominalBTC.data || 0}
-                    isLoading={nominalBTC.isLoading}
+                    isLoading={nominalBTC.isFetching}
                 />
             </main>
         </Layout>

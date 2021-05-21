@@ -1,11 +1,13 @@
 import * as React from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { apiClient } from "../utils";
 import { Layout } from "../komponen/layout";
 import { KeteranganKurs } from "../komponen/keterangan-kurs";
 import { FormKonversi } from "../komponen/form-konversi";
 
 export default function KonversiIDR() {
+    const queryClient = useQueryClient();
+
     const [inputBTC, setInputBTC] = React.useState(1);
 
     const perUSD = useQuery(["btc-per-usd"], async () => {
@@ -13,6 +15,10 @@ export default function KonversiIDR() {
             "https://blockchain.info/tobtc?currency=USD&value=1"
         );
     });
+
+    React.useEffect(() => {
+        queryClient.invalidateQueries("btc-per-usd");
+    }, [inputBTC]);
 
     function hitungNominalIDR(perUSD) {
         return (inputBTC / perUSD) * 14000;
@@ -36,7 +42,7 @@ export default function KonversiIDR() {
                     displayHasil={
                         perUSD.data ? hitungNominalIDR(perUSD.data) : 0
                     }
-                    isLoading={perUSD.isLoading}
+                    isLoading={perUSD.isFetching}
                 />
             </main>
         </Layout>
