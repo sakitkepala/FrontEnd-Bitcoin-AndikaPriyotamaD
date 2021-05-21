@@ -11,7 +11,8 @@ Sumber data dari: [blockchain.com/explorer](https://www.blockchain.com/explorer)
 ## Setup development
 
 ```
-git clone https://github.com/sakitkepala/FrontEnd-Bitcoin-AndikaPriyotamaD.git
+git clone https://github.com/sakitkepala/FrontEnd-Bitcoin-AndikaPriyotamaD.git bitcoin
+cd bitcoin
 
 // Install dependensi projek (Laravel 7.x, PHP 7.2)
 composer install
