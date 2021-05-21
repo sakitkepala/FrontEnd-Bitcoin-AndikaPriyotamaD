@@ -13,14 +13,18 @@ Sumber data dari: [blockchain.com/explorer](https://www.blockchain.com/explorer)
 ```
 git clone https://github.com/sakitkepala/FrontEnd-Bitcoin-AndikaPriyotamaD.git
 
-// Install dependensi projek Laravel 7.x (PHP 7.2)
+// Install dependensi projek (Laravel 7.x, PHP 7.2)
 composer install
 
 // Install & build asset JS & CSS untuk environment development
 yarn install && yarn dev
+
+// Jalankan server Laravel & front-end
+php artisan server
+yarn watch // atau `npm run watch`
 ```
 
-Untuk front-end, projek ini menggunakan package manager Yarn, tidak NPM seperti default dari Laravel, tapi tetap bisa menggunakan perintah `npm install && npm run dev`, bila Yarn terinstall di mesin. Bila tidak berhasil, hapus file `yarn.lock` lalu update `script` di `package.json` menjadi kurang-lebih seperti berikut untuk bisa menggunakan NPM:
+Untuk front-end, projek ini menggunakan [package manager Yarn](https://yarnpkg.com/), tidak NPM seperti default dari Laravel, tapi tetap bisa menggunakan perintah `npm install && npm run dev`, bila Yarn terinstall di mesin. Bila tidak berhasil, hapus file `yarn.lock` lalu update `script` di `package.json` menjadi kurang-lebih seperti berikut untuk bisa menggunakan NPM:
 
 ```
 // Ganti perintah `yarn` dengan perintah `npm run`...
@@ -35,3 +39,5 @@ Untuk front-end, projek ini menggunakan package manager Yarn, tidak NPM seperti 
     ...
 }
 ```
+
+## ☕ 👋🏼
